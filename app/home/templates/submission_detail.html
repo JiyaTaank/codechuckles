@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Submission Detail</title>
+    <link rel="stylesheet" href="{% static 'submission.css' %}">
+</head>
+<body>
+    <div id="navbar">
+        <form id="home-form" action="{% url 'all-questions' %}" method="get">
+            <button type="submit">Home</button>
+        </form>
+        <form id="profile-form" action="{% url 'profile' %}" method="get">
+            <button type="submit">Profile</button>
+        </form>
+
+    </div>
+    <h1>Submission Details</h1>
+    
+    <p><strong>Question:</strong> {{ submission.question.question }}</p>
+    <p><strong>Language:</strong> {{ submission.language }}</p>
+    <p><strong>Status:</strong> {{ submission.status }}</p>
+    <p><strong>Code:</strong></p>
+    <pre>{{ submission.code }}</pre>
+    
+</body>
+</html>

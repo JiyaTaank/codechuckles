@@ -1,0 +1,26 @@
+# Ignore macOS system files
+.DS_Store
+
+# Ignore virtual environments
+myenv/
+venv/
+
+# Ignore Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore Django SQLite database
+db.sqlite3
+
+# Ignore temporary or generated folders
+codes/
+inputs/
+outputs/
+
+# Ignore compiled code
+*.o
+*.out
+
+# Ignore Docker-related files (optional, depends on your preference)
+*.log

@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Form</title>
+    <link rel="stylesheet" href="{% static 'style1.css' %}">
+</head>
+<body>
+    <div class="login-container">
+        <h1>Welcome Back to CODECHUCKLES!</h1>
+        <h2>LOGIN</h2>
+        <br>
+        <div class="login">
+
+            <!--login form-->
+            <form id="login" method="post" enctype="multipart/form-data">
+
+                {% csrf_token %}
+                <!--for security-->
+
+                {% if messages %}
+                <div class="alert" role="alert">
+                    {% for message in messages %}{{message}} {% endfor %}
+                </div>
+                {% endif %}
+
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input
+                      type="text"
+                      name="username"
+                      id="username"
+                      placeholder="Enter username"
+                      required
+                    />
+                </div>
+                
+                <!-- Password input field -->
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input
+                      type="password"
+                      name="password"
+                      id="password"
+                      placeholder="Password"
+                      required
+                    />
+                </div>
+
+                <!-- Link to login page for users who already have an account -->
+                <p>Don't have an account <a href="/auth/register/">Register</a></p>
+
+                <!-- Submit button -->
+                <button type="submit" class="button">Submit</button>
+            
+            </form>
+        </div>
+    </div>
+</body>
+</html>

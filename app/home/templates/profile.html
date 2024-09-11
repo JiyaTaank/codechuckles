@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <link rel="stylesheet" href="{% static 'profilepage.css' %}">
+</head>
+<body>
+    <div id="navbar">
+        <form id="home-form" action="{% url 'all-questions' %}" method="get">
+            <button type="submit">Home</button>
+        </form>
+    </div>
+
+    <h1>{{ username }}'s Profile</h1>
+    
+    <div>
+        <p><strong>Attempted Questions:</strong> {{ attempted_questions }}</p>
+        <p><strong>Accepted Questions:</strong> {{ accepted_questions }}</p>
+        <p><strong>Rejected Questions:</strong> {{ rejected_questions }}</p>
+        
+    </div>
+
+    <h2>Question Status</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Question</th>
+                <th>Latest Status</th>
+                <th>Latest Submission</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in question_status %}
+            <tr>
+                <td><a href="{% url 'question-detail' question_id=item.question.id %}">{{ item.question.question }}</a></td>
+                <td>{{ item.status }}</td>
+                <td>
+                    {% if item.latest_submission %}
+                        <a href="{% url 'submission-detail' submission_id=item.latest_submission.id %}">View Submission</a>
+                    {% else %}
+                        No Submission
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
+

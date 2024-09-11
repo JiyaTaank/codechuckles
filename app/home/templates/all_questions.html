@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Questions</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="List of questions with details" />
+    <link rel="stylesheet" href="{% static 'home.css' %}">
+  </head>
+  <body>
+    <div id="navbar">
+      <form id="profile-form" action="{% url 'profile' %}" method="get">
+        {% csrf_token %}
+        <button type="submit">Profile</button>
+      </form>
+        <form id="leaderboader-form" action="{% url 'leaderboard' %}" method="get">
+          {% csrf_token %}
+          <button type="submit">LeaderBoard</button>
+      </form>
+      <form id="logout-form" action="{% url 'accounts:logout-user' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
+
+    </div>
+    <h1>QUESTION LIST</h1>
+
+    <form method="get" action="{% url 'all-questions' %}">
+      <input type="text" name="q" placeholder="Search questions" value="{{ query|default_if_none:'' }}">
+      <select name="level">
+          <option value="">All Levels</option>
+          <option value="Easy" {% if level_filter == 'Easy' %}selected{% endif %}>Easy</option>
+          <option value="Medium" {% if level_filter == 'Medium' %}selected{% endif %}>Medium</option>
+          <option value="Hard" {% if level_filter == 'Hard' %}selected{% endif %}>Hard</option>
+      </select>
+      <button type="submit">Filter</button>
+    </form>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Serial No.</th>
+          <th>Question Name</th>
+          <th>Difficulty Level</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for question in all_questions %}
+        <tr>
+          <td>{{ forloop.counter }}</td>
+          <td><a href="/home/questions/{{question.id}}/">{{question.question}}</a></td>
+          <td>{{ question.level }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>

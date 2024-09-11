@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Leaderboard</title>
+    <link rel="stylesheet" href="{% static 'leaderpage.css' %}">
+</head>
+<body>
+    <div id="navbar">
+        <form id="home-form" action="{% url 'all-questions' %}" method="get">
+            <button type="submit">Home</button>
+        </form>
+    </div>
+    <h1>Leaderboard</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Username</th>
+                <th>Latest Submitted Question</th>
+                <th>Latest Status</th>
+                <th>Total Accepted Submissions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in leaderboard_entries %}
+            <tr>
+                <td>{{ entry.rank }}</td>
+                <td>{{ entry.username }}</td>
+                <td>{{ entry.latest_question }}</td>
+                <td>{{ entry.latest_status }}</td>
+                <td>{{ entry.total_accepted }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
+

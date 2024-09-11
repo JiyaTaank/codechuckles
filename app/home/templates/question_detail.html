@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ question.question }}</title>
+    <link rel="stylesheet" href="{% static 'codepage.css' %}">
+</head>
+<body>
+    <div id="navbar">
+        <form id="home-form" action="{% url 'all-questions' %}" method="get">
+            <button type="submit">Home</button>
+        </form>
+        <form id="profile-form" action="{% url 'profile' %}" method="get">
+            <button type="submit">Profile</button>
+        </form>
+    </div>
+
+    <h1>{{ question.question }}</h1>
+    <p>{{ question.description }}</p>
+
+    <!-- Example Input/Output Section -->
+    <div>
+        <h2>Example Input</h2>
+        <pre>{{ question.example_input }}</pre>
+        
+        <h2>Example Output</h2>
+        <pre>{{ question.example_output }}</pre>
+
+        <h2>Constraints:</h2>
+        <pre>{{ question.constraint_n }}</pre>
+
+
+    </div>
+
+    <!-- Form for Language Selection and Code Submission -->
+    <form method="POST" action="{% url 'question-detail' question_id=question.id %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" name="action" value="run">Run Code</button>
+        <button type="submit" name="action" value="submit">Submit Code</button>
+    </form>
+    <!-- Output Section -->
+    {% if output %}
+    <div class="output-container">
+        <h2>Output</h2>
+        <pre>{{ output }}</pre>
+    </div>
+    {% endif %}
+    {% if status %}
+    <div class="status-container {% if status == 'Accepted' %}accepted{% else %}rejected{% endif %} ">
+        
+        <h3>TestCase Results:</h3>
+        <ul>
+            {% for result in test_results %}
+            <li>             
+                {{ result.status }}
+            </li>
+            {% endfor %}
+        </ul>
+        <h2>Status</h2>
+        <p>{{ status }}</p>
+    </div>
+    {% endif %}
+</body>
+</html>
