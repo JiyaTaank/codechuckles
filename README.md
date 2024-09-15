@@ -1,4 +1,6 @@
-The CodeChuckles is a web-based onlinejudge platform where users can practice coding by solving problems and submitting their solutions. The platform provides functionality to run code in various languages, evaluates the submissions against test cases, and maintains leaderboards based on the users' submissions.<br><br>
+The CodeChuckles is a web-based onlinejudge platform where users can practice coding by solving problems and submitting their solutions. The platform provides functionality to run code in various languages, evaluates the submissions against test cases, and maintains leaderboards based on the users' submissions.<br>
+Deployement Link: http://13.232.107.225:8000
+<br><br>
 
 Features:<br>
 1.)User Authentication: Sign up, login, and manage user accounts using Django's built-in authentication system (User model and admin panel).<br>
