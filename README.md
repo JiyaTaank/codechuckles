@@ -1,5 +1,7 @@
-The CodeChuckles is a web-based onlinejudge platform where users can practice coding by solving problems and submitting their solutions. The platform provides functionality to run code in various languages, evaluates the submissions against test cases, and maintains leaderboards based on the users' submissions.<br>
+The CodeChuckles is a web-based onlinejudge platform where users can practice coding by solving problems and submitting their solutions. The platform provides functionality to run code in various languages, evaluates the submissions against test cases, and maintains leaderboards based on the users' submissions.<br><br>
 Deployement Link: http://13.232.107.225:8000
+<br>
+Video Link:https://www.loom.com/share/af4076b503324486ac30433b86449a03?sid=e88d0cb6-2442-4161-ad0a-7d880bfcdaac
 <br><br>
 
 Features:<br>
