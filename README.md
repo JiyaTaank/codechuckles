@@ -15,7 +15,7 @@ Features:<br>
 
 Tech Stack:<br>
 1.)Backend: Django 4.2.2<br>
-2.)Frontend: HTML, CSS, JavaScript<br>
+2.)Frontend: HTML, CSS <br>
 3.)Containerization: Docker<br>
 4.)Deployment: AWS EC2<br>
 
